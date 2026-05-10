@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import anthropic; print\\('✓ anthropic library installed'\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 *)",
+      "Bash(git -C data/repos/xfs log --oneline -5)",
+      "Bash(open data/drafts/LinkedIn_Kernel_Storage_Update_May2025.html)",
+      "Bash(open *)",
+      "Read(//Applications/Google Chrome.app/Contents/MacOS/**)",
+      "Read(//Applications/Chromium.app/Contents/MacOS/**)",
+      "Bash(/Applications/Google Chrome.app/Contents/MacOS/Google Chrome *)",
+      "Bash(chmod +x *)",
+      "Bash(awk '{print $9, $5}')",
+      "Bash(launchctl load *)",
+      "Bash(launchctl list *)",
+      "Bash(gh auth *)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

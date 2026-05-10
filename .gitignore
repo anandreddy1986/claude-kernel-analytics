@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Data directories (raw data can be large)
+data/raw/
+data/repos/
+data/processed/
+data/drafts/
+data/published/
+
+# Database files
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+
+# Environment variables
+.env
+.env.local
+.env_email
+
+# API keys (never commit these!)
+*.key
+secrets/
+credentials/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# But keep directory structure
+!data/.gitkeep
+!database/.gitkeep

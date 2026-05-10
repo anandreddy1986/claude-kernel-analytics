@@ -1,0 +1,7 @@
+{
+  "smtp_server": "smtp.gmail.com",
+  "smtp_port": 587,
+  "sender_email": "anareddy@redhat.com",
+  "recipient_email": "anareddy@redhat.com",
+  "_comment": "DO NOT store SMTP password here - use environment variable SMTP_PASSWORD instead"
+}

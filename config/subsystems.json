@@ -1,0 +1,211 @@
+{
+  "xfs": {
+    "name": "XFS Filesystem",
+    "category": "filesystems",
+    "description": "High-performance journaling filesystem with advanced features for scalability and reliability",
+    "mailing_lists": ["linux-xfs@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/fs/xfs/xfs-linux.git"],
+    "lore_url": "https://lore.kernel.org/linux-xfs/",
+    "maintainers": ["Darrick J. Wong", "Chandan Babu R"],
+    "priority": "high",
+    "keywords": ["xfs", "extent", "btree", "log", "inode", "reflink", "scrub"]
+  },
+  "ext4": {
+    "name": "EXT4 Filesystem",
+    "category": "filesystems",
+    "description": "Default Linux filesystem, evolution of ext3 with improved performance and features",
+    "mailing_lists": ["linux-ext4@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/tytso/ext4.git"],
+    "lore_url": "https://lore.kernel.org/linux-ext4/",
+    "maintainers": ["Theodore Ts'o", "Jan Kara"],
+    "priority": "high",
+    "keywords": ["ext4", "journal", "extent", "inode", "fsck", "resize"]
+  },
+  "btrfs": {
+    "name": "Btrfs Filesystem",
+    "category": "filesystems",
+    "description": "Copy-on-write filesystem with advanced features like snapshots, compression, and RAID",
+    "mailing_lists": ["linux-btrfs@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/kdave/linux.git"],
+    "lore_url": "https://lore.kernel.org/linux-btrfs/",
+    "maintainers": ["David Sterba", "Josef Bacik"],
+    "priority": "high",
+    "keywords": ["btrfs", "cow", "snapshot", "subvolume", "compression", "raid", "balance"]
+  },
+  "overlayfs": {
+    "name": "OverlayFS",
+    "category": "filesystems",
+    "description": "Union filesystem allowing multiple filesystems to be stacked",
+    "mailing_lists": ["linux-unionfs@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"],
+    "lore_url": "https://lore.kernel.org/linux-unionfs/",
+    "maintainers": ["Miklos Szeredi", "Amir Goldstein"],
+    "priority": "medium",
+    "keywords": ["overlayfs", "overlay", "union", "upperdir", "lowerdir", "whiteout"]
+  },
+  "fuse": {
+    "name": "FUSE / VirtioFS",
+    "category": "filesystems",
+    "description": "Filesystem in userspace framework and virtio-based filesystem for VMs",
+    "mailing_lists": ["fuse-devel@lists.sourceforge.net"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"],
+    "lore_url": "https://lore.kernel.org/linux-fsdevel/",
+    "maintainers": ["Miklos Szeredi"],
+    "priority": "medium",
+    "keywords": ["fuse", "virtiofs", "passthrough", "dax"]
+  },
+  "nfs": {
+    "name": "NFS Client & Server",
+    "category": "network_filesystems",
+    "description": "Network File System kernel client and server (knfsd) implementation",
+    "mailing_lists": ["linux-nfs@vger.kernel.org"],
+    "git_repos": ["git://git.linux-nfs.org/projects/cel/cel-2.6.git"],
+    "lore_url": "https://lore.kernel.org/linux-nfs/",
+    "maintainers": ["Chuck Lever", "Anna Schumaker", "Trond Myklebust"],
+    "priority": "high",
+    "keywords": ["nfs", "nfsd", "rpc", "lockd", "pnfs", "nfsv4", "delegations"]
+  },
+  "smb": {
+    "name": "SMB / CIFS Client",
+    "category": "network_filesystems",
+    "description": "Linux kernel client for SMB/CIFS protocol (Windows file sharing)",
+    "mailing_lists": ["linux-cifs@vger.kernel.org"],
+    "git_repos": ["git://git.samba.org/sfrench/cifs-2.6.git"],
+    "lore_url": "https://lore.kernel.org/linux-cifs/",
+    "maintainers": ["Steve French", "Paulo Alcantara"],
+    "priority": "high",
+    "keywords": ["smb", "cifs", "smb3", "multichannel", "signing", "encryption"]
+  },
+  "cifs": {
+    "name": "SMB / CIFS Client",
+    "category": "network_filesystems",
+    "description": "Linux kernel client for SMB/CIFS protocol (Windows file sharing)",
+    "mailing_lists": ["linux-cifs@vger.kernel.org"],
+    "git_repos": ["git://git.samba.org/sfrench/cifs-2.6.git"],
+    "lore_url": "https://lore.kernel.org/linux-cifs/",
+    "maintainers": ["Steve French", "Paulo Alcantara"],
+    "priority": "high",
+    "keywords": ["smb", "cifs", "smb3", "multichannel", "signing", "encryption"]
+  },
+  "vfs": {
+    "name": "Virtual File System Layer",
+    "category": "core",
+    "description": "Core abstraction layer for all filesystem operations",
+    "mailing_lists": ["linux-fsdevel@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/vfs/vfs.git"],
+    "lore_url": "https://lore.kernel.org/linux-fsdevel/",
+    "maintainers": ["Christian Brauner", "Al Viro"],
+    "priority": "high",
+    "keywords": ["vfs", "inode", "dentry", "namei", "dcache", "page-cache", "writeback"]
+  },
+  "ceph": {
+    "name": "CephFS",
+    "category": "network_filesystems",
+    "description": "Distributed filesystem client for Ceph storage",
+    "mailing_lists": ["ceph-devel@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/ceph/ceph-client.git"],
+    "lore_url": "https://lore.kernel.org/ceph-devel/",
+    "maintainers": ["Ilya Dryomov", "Xiubo Li"],
+    "priority": "medium",
+    "keywords": ["ceph", "cephfs", "rados", "osd", "mds", "crush"]
+  },
+  "gfs2": {
+    "name": "GFS2 Clustered Filesystem",
+    "category": "clustered_filesystems",
+    "description": "Global File System 2 for shared storage clusters",
+    "mailing_lists": ["cluster-devel@redhat.com"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"],
+    "lore_url": "https://lore.kernel.org/linux-fsdevel/",
+    "maintainers": ["Andreas Gruenbacher", "Bob Peterson"],
+    "priority": "medium",
+    "keywords": ["gfs2", "dlm", "cluster", "lock", "glock", "shared"]
+  },
+  "dm": {
+    "name": "Device Mapper / LVM",
+    "category": "storage",
+    "description": "Device mapper framework for logical volume management",
+    "mailing_lists": ["dm-devel@lists.linux.dev"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/device-mapper/linux-dm.git"],
+    "lore_url": "https://lore.kernel.org/dm-devel/",
+    "maintainers": ["Mike Snitzer", "Alasdair Kergon"],
+    "priority": "high",
+    "keywords": ["dm", "device-mapper", "lvm", "thin", "snapshot", "multipath", "cache"]
+  },
+  "block": {
+    "name": "Block Layer / I/O Schedulers",
+    "category": "storage",
+    "description": "Block layer subsystem and I/O scheduling algorithms",
+    "mailing_lists": ["linux-block@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.dk/linux.git"],
+    "lore_url": "https://lore.kernel.org/linux-block/",
+    "maintainers": ["Jens Axboe"],
+    "priority": "high",
+    "keywords": ["block", "blk-mq", "io-sched", "bfq", "kyber", "deadline", "iopoll"]
+  },
+  "md": {
+    "name": "MD / RAID",
+    "category": "storage",
+    "description": "Software RAID and multi-device management",
+    "mailing_lists": ["linux-raid@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/song/md.git"],
+    "lore_url": "https://lore.kernel.org/linux-raid/",
+    "maintainers": ["Song Liu"],
+    "priority": "medium",
+    "keywords": ["md", "raid", "raid5", "raid6", "bitmap", "reshape", "recovery"]
+  },
+  "nvme": {
+    "name": "NVMe / Storage Protocols",
+    "category": "storage",
+    "description": "NVMe storage protocol and driver",
+    "mailing_lists": ["linux-nvme@lists.infradead.org"],
+    "git_repos": ["git://git.infradead.org/nvme.git"],
+    "lore_url": "https://lore.kernel.org/linux-nvme/",
+    "maintainers": ["Christoph Hellwig", "Keith Busch", "Sagi Grimberg"],
+    "priority": "high",
+    "keywords": ["nvme", "fabrics", "multipath", "tcp", "rdma", "namespace"]
+  },
+  "netdev": {
+    "name": "Networking Stack",
+    "category": "core",
+    "description": "TCP/IP networking stack and network drivers",
+    "mailing_lists": ["netdev@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git"],
+    "lore_url": "https://lore.kernel.org/netdev/",
+    "maintainers": ["David S. Miller", "Jakub Kicinski", "Paolo Abeni"],
+    "priority": "high",
+    "keywords": ["tcp", "udp", "routing", "netfilter", "xdp", "bpf", "ipv6"]
+  },
+  "mm": {
+    "name": "Memory Management",
+    "category": "core",
+    "description": "Virtual memory management subsystem",
+    "mailing_lists": ["linux-mm@lists.linux.dev"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/akpm/mm.git"],
+    "lore_url": "https://lore.kernel.org/linux-mm/",
+    "maintainers": ["Andrew Morton"],
+    "priority": "high",
+    "keywords": ["mm", "memory", "page", "slab", "vmalloc", "oom", "swap", "thp"]
+  },
+  "sched": {
+    "name": "Process Scheduling / Kernel Core",
+    "category": "core",
+    "description": "Process scheduler, signals, and core kernel functionality",
+    "mailing_lists": ["linux-kernel@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git"],
+    "lore_url": "https://lore.kernel.org/lkml/",
+    "maintainers": ["Ingo Molnar", "Peter Zijlstra", "Thomas Gleixner"],
+    "priority": "medium",
+    "keywords": ["scheduler", "cfs", "deadline", "rt", "signals", "futex", "rcu"]
+  },
+  "security": {
+    "name": "Security / LSM / SELinux",
+    "category": "core",
+    "description": "Linux Security Module framework and implementations",
+    "mailing_lists": ["linux-security-module@vger.kernel.org", "selinux@vger.kernel.org"],
+    "git_repos": ["git://git.kernel.org/pub/scm/linux/kernel/git/pcmoore/selinux.git"],
+    "lore_url": "https://lore.kernel.org/selinux/",
+    "maintainers": ["Paul Moore", "Stephen Smalley"],
+    "priority": "high",
+    "keywords": ["lsm", "selinux", "apparmor", "smack", "security", "audit"]
+  }
+}

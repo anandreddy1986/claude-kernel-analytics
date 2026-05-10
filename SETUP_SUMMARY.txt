@@ -1,0 +1,110 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║         MONTHLY AUTOMATION - SETUP COMPLETE                          ║
+║                                                                      ║
+║  Automated Linux Kernel Storage Report                              ║
+║  Email: anareddy@redhat.com                                         ║
+║  Schedule: 1st of every month at 9:00 AM                            ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+📋 WHAT'S BEEN CREATED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ monthly_kernel_report.py              Main automation script
+✅ com.redhat.kernel.monthly.plist       macOS scheduler configuration  
+✅ test_monthly_automation.sh            Test & validation script
+✅ config/email_config.json.template     Email configuration template
+✅ MONTHLY_AUTOMATION_SETUP.md           Detailed setup guide
+✅ MONTHLY_AUTOMATION_READY.md           Quick reference guide
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 QUICK START (3 STEPS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: Get Gmail App Password
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Go to: https://myaccount.google.com/apppasswords
+2. Generate App Password for "Mail" on "Mac"
+3. Copy the 16-character password
+
+Then run:
+  export SMTP_PASSWORD="your-app-password-here"
+  echo 'export SMTP_PASSWORD="your-app-password"' >> ~/.zshrc
+
+
+STEP 2: Install Automation
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  cp com.redhat.kernel.monthly.plist ~/Library/LaunchAgents/
+  launchctl load ~/Library/LaunchAgents/com.redhat.kernel.monthly.plist
+  launchctl list | grep com.redhat.kernel.monthly
+
+
+STEP 3: Test It
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ./test_monthly_automation.sh
+
+  Or run manually:
+  python3 monthly_kernel_report.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📧 WHAT YOU'LL RECEIVE MONTHLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+To: anareddy@redhat.com
+Subject: Linux Kernel Storage & Filesystem Update - [Month Year]
+
+📎 Attachments:
+  • Linux_Kernel_Storage_Update_[Month_Year].pdf   (~260 KB)
+  • Linux_Kernel_Storage_Update_[Month_Year].html  (~30 KB)
+
+📊 Coverage:
+  • 12 Kernel Subsystems (XFS, EXT4, Btrfs, NFS, etc.)
+  • 5 Userspace Components (LVM2, Ceph, Samba, SPDK, CSI)
+  • Architectural themes & convergence analysis
+  • AI/ML infrastructure relevance
+  • Forward-looking trends
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 SCHEDULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Runs: 1st of every month at 9:00 AM
+
+Next scheduled runs:
+  • June 1, 2026 at 9:00 AM
+  • July 1, 2026 at 9:00 AM  
+  • August 1, 2026 at 9:00 AM
+  • ... (continues monthly)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 MONITORING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+View logs:
+  tail -f logs/monthly_report.log
+  tail -f logs/monthly_report_error.log
+
+Check status:
+  launchctl list | grep com.redhat.kernel.monthly
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Full setup guide:    MONTHLY_AUTOMATION_SETUP.md
+Quick reference:     MONTHLY_AUTOMATION_READY.md
+This summary:        SETUP_SUMMARY.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ STATUS: READY FOR DEPLOYMENT
+
+Questions? Email: anareddy@redhat.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
