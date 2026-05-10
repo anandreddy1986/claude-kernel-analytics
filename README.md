@@ -2,6 +2,15 @@
 
 An autonomous agentic AI system powered by Claude that monitors Linux kernel development and generates weekly blog posts.
 
+## 🔒 Security Notice
+
+**For new users:** This project requires API keys. See **[SETUP_FOR_NEW_USERS.md](SETUP_FOR_NEW_USERS.md)** for complete setup instructions.
+
+**Important:**
+- Never commit API keys or credentials to version control
+- The `.gitignore` is configured to protect sensitive files (`.env*`, credentials, etc.)
+- Set `ANTHROPIC_API_KEY` as an environment variable, not in code
+
 ## What This Does
 
 Automatically tracks 15+ Linux kernel subsystems (filesystems, networking, memory management, storage) across mailing lists and git repositories, analyzes changes using Claude's extended thinking capabilities, and generates comprehensive weekly blog posts summarizing the most important updates.
