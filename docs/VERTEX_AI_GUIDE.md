@@ -2,22 +2,37 @@
 
 ## Overview
 
-This project supports **Google Cloud Vertex AI** as an alternative to direct Anthropic API access. Vertex AI provides Claude models through Google Cloud Platform with:
+This project supports **Google Cloud Vertex AI** as an alternative to direct Anthropic API access. Vertex AI provides Claude models through Google Cloud Platform with enterprise features.
 
-- ✅ **No Anthropic API key needed**
-- ✅ **GCP-integrated billing**
-- ✅ **Enterprise security and compliance**
-- ✅ **Same Claude models** (Opus, Sonnet, Haiku)
-- ✅ **Prompt caching support**
+**Benefits:**
+- ✅ No Anthropic API key needed
+- ✅ GCP-integrated billing
+- ✅ Enterprise security and compliance
+- ✅ Same Claude models (Opus, Sonnet, Haiku)
+- ✅ Prompt caching support
+
+---
+
+## Quick Start (3 Commands)
+
+```bash
+# 1. Set your GCP project
+export GOOGLE_CLOUD_PROJECT="your-project-id"
+
+# 2. Authenticate
+gcloud auth application-default login
+
+# 3. Install dependencies (if not already done)
+pip install 'anthropic[vertex]' requests python-dateutil gitpython
+```
 
 ---
 
 ## Prerequisites
 
 1. **Google Cloud Project** with Vertex AI enabled
-2. **Authentication** via Application Default Credentials (ADC)
-3. **Python 3.10+**
-4. **anthropic[vertex]** Python package
+2. **Python 3.10+**
+3. **gcloud CLI** installed
 
 ---
 
@@ -69,26 +84,7 @@ gcloud iam service-accounts keys create ~/kernel-tracker-key.json \
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/kernel-tracker-key.json"
 ```
 
-### 3. Install Dependencies
-
-```bash
-# Install Anthropic SDK with Vertex AI support
-pip install 'anthropic[vertex]' requests python-dateutil gitpython
-
-# Or from requirements file
-pip install -r requirements.txt
-```
-
-Update `requirements.txt` to include Vertex AI:
-```txt
-anthropic[vertex]>=0.34.0
-google-cloud-aiplatform>=1.38.0
-requests>=2.31.0
-python-dateutil>=2.9.0
-gitpython>=3.1.43
-```
-
-### 4. Configure Environment
+### 3. Configure Environment
 
 Add to your `.bashrc` or `.zshrc`:
 ```bash
@@ -96,7 +92,7 @@ Add to your `.bashrc` or `.zshrc`:
 export GOOGLE_CLOUD_PROJECT="your-project-id"
 export GOOGLE_CLOUD_REGION="us-east5"  # or your preferred region
 
-# Optional: Service account key
+# Optional: Service account key (if using Option B)
 export GOOGLE_APPLICATION_CREDENTIALS="$HOME/kernel-tracker-key.json"
 ```
 
@@ -107,9 +103,9 @@ source ~/.bashrc  # or source ~/.zshrc
 
 ---
 
-## Available Regions for Claude on Vertex AI
+## Available Regions
 
-Claude is available in these regions:
+Claude is available in these Vertex AI regions:
 - `us-east5` (Columbus, Ohio) - **Recommended**
 - `europe-west1` (Belgium)
 - `asia-northeast1` (Tokyo)
@@ -123,29 +119,17 @@ gcloud ai models list --region=us-east5 | grep claude
 
 ## Available Models
 
-### Claude Sonnet 4.6 (Recommended for this project)
-```
-Model ID: claude-sonnet-4-6@20250514
-Use case: Analysis and writing (good balance of cost/performance)
-```
-
-### Claude Opus 4.7 (Higher accuracy)
-```
-Model ID: claude-opus-4-7@20250514
-Use case: Complex analysis requiring maximum accuracy
-```
-
-### Claude Haiku 4.5 (Fastest/cheapest)
-```
-Model ID: claude-haiku-4-5@20251001
-Use case: Simple data collection or filtering
-```
+| Model | Model ID | Best For |
+|-------|----------|----------|
+| **Claude Sonnet 4.6** | `claude-sonnet-4-6@20250514` | Analysis and writing (recommended) |
+| **Claude Opus 4.7** | `claude-opus-4-7@20250514` | Complex analysis requiring maximum accuracy |
+| **Claude Haiku 4.5** | `claude-haiku-4-5@20251001` | Simple data collection or filtering |
 
 ---
 
-## Running the Agents with Vertex AI
+## Running the Agents
 
-### Analysis Agent
+### Analysis Agent (Vertex AI version)
 
 ```bash
 # Using environment variables
@@ -161,7 +145,7 @@ python3 agents/analyzer_vertexai.py \
     --model claude-sonnet-4-6@20250514
 ```
 
-### Writer Agent
+### Writer Agent (Vertex AI version)
 
 ```bash
 # Generate blog post
@@ -169,20 +153,56 @@ python3 agents/writer_vertexai.py \
     --subsystems xfs ext4 btrfs \
     --date 2026-05-07 \
     --date-range "May 1-7, 2026"
+```
 
-# With explicit configuration
-python3 agents/writer_vertexai.py \
-    --subsystems xfs \
-    --project-id your-project-id \
-    --region us-east5 \
-    --model claude-sonnet-4-6@20250514
+---
+
+## Code Differences
+
+### Anthropic API vs Vertex AI
+
+**Original (Direct Anthropic API):**
+```python
+from anthropic import Anthropic
+
+client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+response = client.messages.create(
+    model="claude-sonnet-4-6",
+    max_tokens=1000,
+    messages=[{"role": "user", "content": "Hello"}]
+)
+```
+
+**Vertex AI:**
+```python
+from anthropic import AnthropicVertex
+
+client = AnthropicVertex(
+    region="us-east5",
+    project_id=os.environ["GOOGLE_CLOUD_PROJECT"]
+)
+
+response = client.messages.create(
+    model="claude-sonnet-4-6@20250514",  # Note: versioned model ID
+    max_tokens=1000,
+    messages=[{"role": "user", "content": "Hello"}]
+)
+```
+
+### File Structure
+
+```
+agents/
+├── analyzer.py              # Original (Anthropic API)
+├── analyzer_vertexai.py     # ← Use this for Vertex AI
+├── writer.py                # Original (Anthropic API)
+└── writer_vertexai.py       # ← Use this for Vertex AI
 ```
 
 ---
 
 ## Testing Your Setup
-
-### Quick Test Script
 
 Save as `test_vertexai.py`:
 ```python
@@ -247,8 +267,6 @@ Vertex AI pricing for Claude (as of May 2026):
 - **Monthly**: $2 - $3
 - **Yearly**: $24 - $36
 
-**Note**: Vertex AI pricing may include additional GCP charges (minimal for API calls).
-
 ---
 
 ## Troubleshooting
@@ -263,7 +281,7 @@ gcloud auth application-default login
 ```bash
 # Solution: Grant Vertex AI User role
 gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT \
-    --member="user:your-email@example.com" \
+    --member="user:$(gcloud config get-value account)" \
     --role="roles/aiplatform.user"
 ```
 
@@ -276,7 +294,6 @@ gcloud services enable aiplatform.googleapis.com
 ### Error: "Model not found in region"
 ```bash
 # Solution: Use a supported region
-# Change to us-east5, europe-west1, or asia-northeast1
 export GOOGLE_CLOUD_REGION="us-east5"
 ```
 
@@ -294,7 +311,7 @@ gcloud ai models list --region=us-east5
 
 ---
 
-## Differences from Direct Anthropic API
+## Anthropic API vs Vertex AI Comparison
 
 | Feature | Anthropic API | Vertex AI |
 |---------|---------------|-----------|
@@ -309,67 +326,18 @@ gcloud ai models list --region=us-east5
 
 ---
 
-## Production Deployment
-
-### Cron Job Setup
-
-Create `/etc/cron.d/kernel-tracker`:
-```cron
-# Run every Sunday at 6 AM
-0 6 * * 0 /opt/kernel-tracker/run.sh
-
-# run.sh should:
-# 1. Set GOOGLE_CLOUD_PROJECT and GOOGLE_APPLICATION_CREDENTIALS
-# 2. Run collector.py
-# 3. Run analyzer_vertexai.py
-# 4. Run writer_vertexai.py
-```
-
-### GCP Compute Engine / Cloud Run
-
-If running on GCP:
-```bash
-# Service account is automatically configured
-# No need for GOOGLE_APPLICATION_CREDENTIALS
-
-# Just set project
-export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value project)
-
-# Run agents
-python3 agents/analyzer_vertexai.py --subsystem xfs
-```
-
----
-
-## Benefits of Vertex AI for Enterprise
+## Enterprise Benefits
 
 1. **Centralized Billing**: All AI costs in GCP billing
 2. **Security**: Service accounts, VPC, audit logs
 3. **Compliance**: HIPAA, SOC 2, ISO 27001
 4. **Integration**: Works with other GCP services
-5. **Multi-Cloud**: Part of broader AI strategy
-6. **Support**: Google Cloud enterprise support
+5. **Support**: Google Cloud enterprise support
 
 ---
 
-## Next Steps
+## Resources
 
-1. ✅ Set up GCP project and authentication
-2. ✅ Test connection with `test_vertexai.py`
-3. ✅ Run demo with sample data
-4. ⬜ Configure for production with service account
-5. ⬜ Set up monitoring and alerting
-6. ⬜ Schedule weekly cron job
-
----
-
-## Support
-
-- **Vertex AI Docs**: https://cloud.google.com/vertex-ai/docs
-- **Claude on Vertex AI**: https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude
-- **Anthropic SDK**: https://github.com/anthropics/anthropic-sdk-python
-- **Project Issues**: https://github.com/your-repo/issues
-
----
-
-*Last updated: 2026-05-07*
+- [Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs)
+- [Claude on Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-claude)
+- [Anthropic SDK](https://github.com/anthropics/anthropic-sdk-python)

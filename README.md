@@ -247,6 +247,15 @@ Key changes:
 Contributors: Darrick J. Wong, Chandan Babu R, Dave Chinner
 ```
 
+## Documentation
+
+- 📘 **[Setup Guide for New Users](SETUP_FOR_NEW_USERS.md)** - Complete installation instructions
+- ⚡ **[Quick Start Guide](QUICKSTART.md)** - Get started in 5 minutes
+- 🗺️ **[Project Plan](docs/PROJECT_PLAN.md)** - Development roadmap
+- 📤 **[Sharing Guide](docs/SHARING_GUIDE.md)** - How to share your results
+- 🤖 **[Agentic AI Explained](docs/AGENTIC_AI_EXPLAINED.md)** - What makes this system "agentic"
+- ☁️ **[Vertex AI Guide](docs/VERTEX_AI_GUIDE.md)** - Using Google Cloud Vertex AI
+
 ## Contributing
 
 This is a personal project, but suggestions for improvements are welcome via issues.
