@@ -27,10 +27,22 @@ PROJECT_ROOT = Path(__file__).parent
 DATA_DIR = PROJECT_ROOT / "data"
 DRAFTS_DIR = DATA_DIR / "drafts"
 CONFIG_FILE = PROJECT_ROOT / "config" / "email_config.json"
+ENV_EMAIL_FILE = PROJECT_ROOT / ".env_email"
 
 
 def load_email_config():
     """Load email configuration from config file or environment variables"""
+    # First, load SMTP password from .env_email file if it exists
+    if ENV_EMAIL_FILE.exists():
+        with open(ENV_EMAIL_FILE, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    if '=' in line:
+                        key, value = line.split('=', 1)
+                        if key.strip() == 'SMTP_PASSWORD':
+                            os.environ['SMTP_PASSWORD'] = value.strip()
+
     config = {
         "smtp_server": os.getenv("SMTP_SERVER", SMTP_SERVER),
         "smtp_port": int(os.getenv("SMTP_PORT", SMTP_PORT)),
@@ -47,8 +59,10 @@ def load_email_config():
     # Check for SMTP password
     smtp_password = os.getenv("SMTP_PASSWORD")
     if not smtp_password:
-        print("WARNING: SMTP_PASSWORD environment variable not set")
-        print("Email sending may fail. Set SMTP_PASSWORD environment variable.")
+        print("WARNING: SMTP_PASSWORD not found in environment or .env_email file")
+        print("Email sending may fail. Set SMTP_PASSWORD via:")
+        print(f"  - .env_email file: echo 'SMTP_PASSWORD=your-password' > {ENV_EMAIL_FILE}")
+        print("  - Environment: export SMTP_PASSWORD='your-password'")
 
     config["smtp_password"] = smtp_password
     return config
