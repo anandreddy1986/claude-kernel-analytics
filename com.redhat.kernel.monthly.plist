@@ -30,11 +30,10 @@
         <string>anand.itsmee@gmail.com</string>
         <key>RECIPIENT_EMAIL</key>
         <string>anareddy@redhat.com</string>
-        <key>SMTP_PASSWORD</key>
-        <string>rzgo hcwt rrlq chre</string>
-        <!-- IMPORTANT: Set SMTP_PASSWORD before loading this plist -->
-        <!-- Use: launchctl setenv SMTP_PASSWORD "your-app-password" -->
-        <!-- Or: Add <key>SMTP_PASSWORD</key><string>your-password</string> here (NOT RECOMMENDED for security) -->
+        <!-- SMTP_PASSWORD: Set via environment variable in ~/.zshrc or use .env_email file -->
+        <!-- SECURITY: NEVER commit passwords to git! -->
+        <!-- Option 1: Add to ~/.zshrc: export SMTP_PASSWORD="your-app-password" -->
+        <!-- Option 2: Create .env_email file (git-ignored) with: SMTP_PASSWORD=your-app-password -->
     </dict>
 
     <!-- Schedule: Run on 1st of every month at 9:00 AM -->
