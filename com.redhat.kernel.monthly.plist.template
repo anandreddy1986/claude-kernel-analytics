@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Job Label -->
+    <key>Label</key>
+    <string>com.kernel.monthly</string>
+
+    <!-- Program to run - UPDATE THIS PATH! -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/FULL/PATH/TO/YOUR/PROJECT/monthly_kernel_report.py</string>
+    </array>
+
+    <!-- Working Directory - UPDATE THIS PATH! -->
+    <key>WorkingDirectory</key>
+    <string>/FULL/PATH/TO/YOUR/PROJECT</string>
+
+    <!-- Environment Variables -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>SMTP_SERVER</key>
+        <string>smtp.gmail.com</string>
+        <key>SMTP_PORT</key>
+        <string>587</string>
+        <key>SENDER_EMAIL</key>
+        <string>your-email@gmail.com</string>
+        <key>RECIPIENT_EMAIL</key>
+        <string>recipient@example.com</string>
+        <!-- SMTP_PASSWORD: Use .env_email file (recommended) or environment variable -->
+        <!-- SECURITY: NEVER hardcode passwords here or commit to git! -->
+        <!-- Option 1 (Recommended): Create .env_email file with: SMTP_PASSWORD=your-app-password -->
+        <!-- Option 2: Add to ~/.zshrc: export SMTP_PASSWORD="your-app-password" -->
+    </dict>
+
+    <!-- Schedule: Run on 1st of every month at 9:00 AM -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Day</key>
+        <integer>1</integer>
+        <!-- Hour: 9 AM (adjust for your timezone) -->
+        <key>Hour</key>
+        <integer>9</integer>
+        <!-- Minute: 0 -->
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- Logging - UPDATE THESE PATHS! -->
+    <key>StandardOutPath</key>
+    <string>/FULL/PATH/TO/YOUR/PROJECT/logs/monthly_report.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/FULL/PATH/TO/YOUR/PROJECT/logs/monthly_report_error.log</string>
+
+    <!-- Run on load (optional - for testing) -->
+    <!-- Remove or set to false for production -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <!-- Keep job running -->
+    <key>KeepAlive</key>
+    <false/>
+
+    <!-- Process management -->
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <!-- Session Type -->
+    <key>LimitLoadToSessionType</key>
+    <string>Aqua</string>
+</dict>
+</plist>

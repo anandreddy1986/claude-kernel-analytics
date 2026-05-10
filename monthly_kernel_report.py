@@ -16,11 +16,12 @@ from email.mime.base import MIMEBase
 from email import encoders
 from pathlib import Path
 
-# Configuration
-RECIPIENT_EMAIL = "anareddy@redhat.com"
-SENDER_EMAIL = "anareddy@redhat.com"  # Can be customized
-SMTP_SERVER = "smtp.gmail.com"  # Default Gmail, can be changed to Red Hat SMTP
-SMTP_PORT = 587
+# Configuration - Use environment variables or config/email_config.json
+# Do not hardcode email addresses in public repositories
+RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", "")
+SENDER_EMAIL = os.getenv("SENDER_EMAIL", "")
+SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
+SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 
 # Get project root directory
 PROJECT_ROOT = Path(__file__).parent

@@ -28,6 +28,12 @@ database/*.sqlite3
 .env.local
 .env_email
 
+# Email configuration (personal)
+config/email_config.json
+
+# Personal automation (macOS launchd)
+com.redhat.kernel.monthly.plist
+
 # API keys (never commit these!)
 *.key
 secrets/

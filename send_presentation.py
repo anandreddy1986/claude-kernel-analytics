@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Send Executive Presentation Email
-Sends the Agentic AI Project presentation to anareddy@redhat.com
+Sends the Agentic AI Project presentation via email
+Configure recipient via RECIPIENT_EMAIL environment variable or config/email_config.json
 """
 
 import os
@@ -20,11 +21,11 @@ PRESENTATIONS_DIR = PROJECT_ROOT / "data" / "presentations"
 PDF_FILE = PRESENTATIONS_DIR / "Executive_Presentation_Agentic_AI_Project.pdf"
 HTML_FILE = PRESENTATIONS_DIR / "Executive_Presentation_Agentic_AI_Project.html"
 
-# Email configuration (from environment)
+# Email configuration (from environment or config file - no hardcoded defaults)
 SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
-SENDER_EMAIL = os.getenv("SENDER_EMAIL", "anand.itsmee@gmail.com")
-RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", "anareddy@redhat.com")
+SENDER_EMAIL = os.getenv("SENDER_EMAIL", "")
+RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", "")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
 def send_presentation_email():

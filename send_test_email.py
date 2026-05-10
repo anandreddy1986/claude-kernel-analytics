@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Quick Test - Send Email with Current Report
-Sends the May 2026 report to anareddy@redhat.com
+Tests email configuration by sending a test report
+Configure recipient via config/email_config.json or environment variables
 """
 
 import os
@@ -35,15 +36,6 @@ print("=" * 70)
 print("📧 SENDING TEST EMAIL")
 print("=" * 70)
 print()
-print("Recipient: anareddy@redhat.com")
-print("Subject:   Linux Kernel Storage & Filesystem Update - May 2026")
-print()
-print("Attachments:")
-print("  • Linux_Kernel_Storage_Update_May_2026.pdf (~260 KB)")
-print("  • Linux_Kernel_Storage_Update_May_2026.html (~30 KB)")
-print()
-print("=" * 70)
-print()
 
 # Import after checking password
 try:
@@ -71,7 +63,7 @@ if result:
     print("✅ SUCCESS!")
     print("=" * 70)
     print()
-    print("Email sent successfully to: anareddy@redhat.com")
+    print(f"Email sent successfully to: {config['recipient_email']}")
     print()
     print("Check your inbox for:")
     print("  Subject: Linux Kernel Storage & Filesystem Update - May 2026")

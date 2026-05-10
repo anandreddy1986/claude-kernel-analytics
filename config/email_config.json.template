@@ -1,7 +1,8 @@
 {
   "smtp_server": "smtp.gmail.com",
   "smtp_port": 587,
-  "sender_email": "anareddy@redhat.com",
-  "recipient_email": "anareddy@redhat.com",
-  "_comment": "DO NOT store SMTP password here - use environment variable SMTP_PASSWORD instead"
+  "sender_email": "your-email@gmail.com",
+  "recipient_email": "recipient@example.com",
+  "_comment": "Copy this file to email_config.json and update with your email addresses",
+  "_note": "DO NOT store SMTP password here - use .env_email file with SMTP_PASSWORD instead"
 }
